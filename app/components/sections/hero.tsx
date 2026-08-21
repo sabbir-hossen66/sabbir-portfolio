@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
@@ -142,17 +143,17 @@ export function Hero() {
               className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 blur-2xl"
             />
             <div className="relative h-full w-full overflow-hidden rounded-3xl border border-border bg-card">
-              {/* Avatar placeholder — replace with <Image src={SITE.avatarUrl} /> once you upload the photo */}
-              <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10 p-6 text-center">
-                <div className="mb-3 text-xs uppercase tracking-widest text-muted-foreground">
-                  Your Photo Here
-                </div>
-                <div className="font-mono text-xs text-muted-foreground/70">
-                  /public/images/avatar.jpg
-                </div>
-              </div>
+              <Image
+                src="/images/sabbir-dev.jpeg"
+                alt={`${SITE.name} — ${SITE.role}`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 50vw, 90vw"
+                className="object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-indigo-500/10 via-transparent to-pink-500/10 mix-blend-overlay" />
 
-              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-border bg-background/80 px-4 py-3 backdrop-blur-md">
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-xl border border-border bg-background/85 px-4 py-3 backdrop-blur-md">
                 <div className="flex flex-col">
                   <span className="font-mono text-xs text-muted-foreground">
                     Currently
@@ -161,8 +162,12 @@ export function Hero() {
                     Front-End Engineer
                   </span>
                 </div>
-                <span className="font-mono text-xs text-emerald-500">
-                  ● Active
+                <span className="inline-flex items-center gap-1.5 font-mono text-xs text-emerald-500">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  </span>
+                  Active
                 </span>
               </div>
             </div>
