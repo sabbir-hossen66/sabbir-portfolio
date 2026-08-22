@@ -22,18 +22,19 @@ export function About() {
           <p>
             I&apos;m{" "}
             <span className="text-foreground font-medium">{siteConfig.name}</span>
-            , a full-stack engineer focused on the MERN stack with a soft spot
-            for Next.js, TypeScript, and well-typed APIs. I&apos;ve shipped
-            production systems for teams in the US and Saudi Arabia — from
-            multi-tenant SaaS to internal admin tools.
+            , a front-end engineer focused on the MERN stack — currently
+            shipping production features at Sofof Tech, where I build real-time
+            and AI-powered web experiences in React, Next.js, and TypeScript.
           </p>
           <p>
             I care deeply about performance, accessibility, and developer
             experience. My workflow leans on strong typing, component-driven
-            design, and clean contracts between the front-end and back-end.
+            design, and clean contracts between the front-end and back-end —
+            whether I&apos;m integrating complex APIs solo or collaborating with
+            a back-end team.
           </p>
           <p>
-            Currently based in{" "}
+            Based in{" "}
             <span className="text-foreground">{siteConfig.location}</span> and
             open to remote roles worldwide.
           </p>
@@ -50,7 +51,7 @@ export function About() {
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-muted-foreground">Location</span>
-              <span className="font-medium">Remote · Worldwide</span>
+              <span className="font-medium">Dhaka, Bangladesh</span>
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-muted-foreground">Stack</span>

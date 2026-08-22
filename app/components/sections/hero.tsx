@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowDown, Github, Linkedin, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
 import { SITE } from "@/lib/data";
@@ -84,9 +84,9 @@ export function Hero() {
           </div>
 
           <p className="max-w-xl text-base text-muted-foreground sm:text-lg">
-            {SITE.tagline} With 2 years of industry experience across US and KSA
-            product teams, I help startups ship faster with clean, accessible,
-            and scalable interfaces.
+            {SITE.tagline} I help product teams ship faster with clean,
+            accessible, and scalable interfaces — currently building real-time
+            and AI-powered experiences for Sofof Tech.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -99,6 +99,16 @@ export function Hero() {
             <a href="#contact">
               <Button size="lg" variant="outline">
                 Get in Touch
+              </Button>
+            </a>
+            <a
+              href="/api/resume"
+              download
+              aria-label="Download Sabbir Hossen resume (PDF)"
+            >
+              <Button size="lg" variant="ghost">
+                <Download className="h-4 w-4" />
+                Resume
               </Button>
             </a>
           </div>

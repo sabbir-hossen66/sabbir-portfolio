@@ -20,16 +20,19 @@ export const siteConfig = {
   tagline:
     "I build scalable, production-grade web applications with React, Next.js, and Node.js.",
   description:
-    "Portfolio of Sabbir Hossen — Full-Stack MERN Developer specializing in React, Next.js, TypeScript, and Node.js. Building scalable, accessible, and high-performance web products.",
+    "Portfolio of Sabbir Hossen — Front-End Engineer specializing in React, Next.js, TypeScript, and Node.js. Building scalable, accessible, and high-performance web products.",
   url: "https://sabbirhossen.dev",
   location: "Available Worldwide · Remote-First",
   email: "hello@sabbirhossen.dev",
-  phone: "+880 1XXX-XXXXXX",
-  resumeUrl: "/resume.pdf",
+  phone: "+880 1783780066",
+  resumeUrl:
+    "https://drive.google.com/uc?export=download&id=1XGhqVACmedHYwGw6yTu5Ng9FF29RX-B6",
+  resumePreviewUrl:
+    "https://drive.google.com/file/d/1XGhqVACmedHYwGw6yTu5Ng9FF29RX-B6/view?usp=drivesdk",
   ogImage: "/og.png",
   socials: {
-    github: "https://github.com/sabbirhossen",
-    linkedin: "https://linkedin.com/in/sabbirhossen",
+    github: "https://github.com/sabbir-hossen66",
+    linkedin: "https://www.linkedin.com/in/sabbir-hossen66/",
     twitter: "https://twitter.com/sabbirhossen",
   },
 } as const;
@@ -56,7 +59,7 @@ export type Experience = {
   role: string;
   period: string;
   location: string;
-  country: "USA" | "Saudi Arabia";
+  country: "Bangladesh" | "USA" | "Saudi Arabia";
   current: boolean;
   highlights: string[];
   stack: string[];
@@ -64,34 +67,61 @@ export type Experience = {
 
 export const EXPERIENCES: Experience[] = [
   {
-    company: "American Tech Co. (Confidential)",
+    company: "Sofof Tech",
     role: "Front-End Engineer",
-    period: "2024 — Present",
-    location: "Remote · USA",
-    country: "USA",
+    period: "August 2025 — Present",
+    location: "Remote ",
+    country: "Saudi Arabia",
     current: true,
     highlights: [
-      "Architected reusable component libraries in React + Next.js 14 used across multiple product lines.",
-      "Led front-end development of a scalable multi-tenant CRM/SaaS platform serving enterprise clients.",
-      "Implemented Nest.js BFF layer for typed, secure API contracts between UI and microservices.",
-      "Improved Core Web Vitals by 40% through code-splitting, image optimization, and SSR streaming.",
+      "Collaborated closely with the backend team to ensure smooth and efficient API integration.",
+      "Delivered high-priority front-end features within tight deadlines without compromising quality.",
+      "Designed and implemented unique UI/UX solutions independently, without relying on Figma or predefined designs.",
+      "Built AI-agent–based front-end websites from scratch with a strong focus on usability and performance.",
+      "Worked closely with back-end developers to integrate complex, large-scale APIs across multiple products.",
+      "Developed a real-time voice communication widget using the LiveKit framework.",
+      "Actively fixed bugs and supported other developers with Git-related issues.",
+      "Contributed across multiple projects including SaaS platforms, CRM systems, and other web applications.",
     ],
-    stack: ["Next.js", "React", "TypeScript", "Nest.js", "Tailwind", "TanStack Query"],
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "LiveKit",
+      "REST APIs",
+      "Git",
+    ],
   },
   {
-    company: "Saudi Arabian Software House (Confidential)",
-    role: "Full-Stack MERN Developer",
-    period: "2023 — 2024",
-    location: "Hybrid · Riyadh",
-    country: "Saudi Arabia",
+    company: "Next Level Bangladesh",
+    role: "Front-End Engineer",
+    period: "April 2025 — 31 August 2025",
+    location: "On-site · Rajshahi, Bangladesh",
+    country: "Bangladesh",
     current: false,
     highlights: [
-      "Delivered production features end-to-end: Node/Express APIs, MongoDB schemas, React front-ends.",
-      "Built RBAC + JWT authentication flows used by 10k+ internal users.",
-      "Collaborated with designers in Figma to ship pixel-perfect, accessible UI components.",
-      "Containerized services with Docker and participated in CI/CD pipeline reviews.",
+      "Delivered high-priority front-end features under tight deadlines alongside the CTO.",
+      "Implemented pagination on large datasets, reducing load time by 40%.",
+      "Built reusable UI components (modals, forms) to reduce duplication and improve maintainability.",
+      "Reviewed pull requests to ensure clean, efficient, and maintainable code.",
+      "Fixed UI/UX bugs, improving dashboard usability for 1,000+ users.",
     ],
-    stack: ["React", "Node.js", "Express", "MongoDB", "Docker", "Jest"],
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "REST APIs", "Git"],
+  },
+  {
+    company: "Longbitz",
+    role: "Front-End Intern",
+    period: "January 2025 — March 2025",
+    location: "Internship · Dhaka, Bangladesh",
+    country: "Bangladesh",
+    current: false,
+    highlights: [
+      "Shipped UI components and fixes in a React/Next.js codebase during a 3-month internship.",
+      "Collaborated with senior engineers to translate Figma designs into responsive, accessible interfaces.",
+      "Practiced code review, PR hygiene, and feature-flag-based deployments.",
+    ],
+    stack: ["React", "Next.js", "JavaScript", "Tailwind CSS", "Git"],
   },
 ];
 
