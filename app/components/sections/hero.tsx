@@ -198,8 +198,8 @@ export function Hero() {
               "animate-fade-in",
             )}
           >
-            <div className="font-mono text-muted-foreground">Countries</div>
-            <div className="text-base font-bold">USA · KSA</div>
+            <div className="font-mono text-muted-foreground">Now in</div>
+            <div className="text-base font-bold">KSA · Remote</div>
           </div>
         </div>
       </div>

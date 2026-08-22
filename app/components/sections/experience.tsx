@@ -54,8 +54,8 @@ export function Experience() {
                 </div>
 
                 {exp.current && (
-                  <Badge className="border border-emerald-500/30 bg-emerald-500/10 px-2.5 text-emerald-700 dark:text-emerald-400">
-                    <span className="mr-1.5 inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  <Badge className="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                    <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500" />
                     Current
                   </Badge>
                 )}

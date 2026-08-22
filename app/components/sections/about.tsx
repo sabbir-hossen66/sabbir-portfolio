@@ -1,72 +1,65 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
 import { Section } from "@/app/components/ui/section";
-import { siteConfig } from "@/lib/data";
+import { STATS, SITE } from "@/lib/data";
 
 export function About() {
   return (
     <Section
       id="about"
       title="About Me"
-      subtitle="A short summary of who I am and what I care about building."
+      subtitle="A short story of where I've been and what I focus on."
     >
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="grid gap-8 md:grid-cols-3"
-      >
-        <div className="md:col-span-2 space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+      <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.4fr_1fr]">
+        <div className="space-y-4 text-base text-muted-foreground sm:text-lg">
           <p>
-            I&apos;m{" "}
-            <span className="text-foreground font-medium">{siteConfig.name}</span>
-            , a front-end engineer focused on the MERN stack — currently
-            shipping production features at Sofof Tech, where I build real-time
-            and AI-powered web experiences in React, Next.js, and TypeScript.
+            I&apos;m <span className="font-medium text-foreground">Sabbir Hossen</span>,
+            a full-stack MERN developer with <span className="font-medium text-foreground">2+ years</span>{" "}
+            of professional experience building production-grade web applications
+            for clients and product teams in the <span className="font-medium text-foreground">United States</span>{" "}
+            and <span className="font-medium text-foreground">Saudi Arabia</span>.
           </p>
           <p>
-            I care deeply about performance, accessibility, and developer
-            experience. My workflow leans on strong typing, component-driven
-            design, and clean contracts between the front-end and back-end —
-            whether I&apos;m integrating complex APIs solo or collaborating with
-            a back-end team.
+            Currently I work as a <span className="font-medium text-foreground">Front-End Engineer</span> on a
+            multi-tenant CRM/SaaS platform, where I help ship a reusable
+            component library in Next.js + TypeScript and own the BFF layer
+            written in Nest.js. I care deeply about accessibility, performance,
+            and clean architecture — code that another engineer can read six
+            months from now without wanting to throw their laptop.
           </p>
           <p>
-            Based in{" "}
-            <span className="text-foreground">{siteConfig.location}</span> and
-            open to remote roles worldwide.
+            I&apos;m actively exploring <span className="font-medium text-foreground">Nest.js</span> and
+            distributed-system patterns, with a clear plan to grow into a
+            well-rounded full-stack engineer who can own both the UI and the
+            services behind it.
           </p>
+
+          <div className="pt-2">
+            <a href={SITE.resumeUrl} download>
+              <Button variant="outline">
+                <Download className="h-4 w-4" />
+                Download Résumé
+              </Button>
+            </a>
+          </div>
         </div>
 
-        <aside className="rounded-xl border border-border bg-card p-6">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-            Quick facts
-          </h3>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground">Role</span>
-              <span className="font-medium">{siteConfig.role}</span>
-            </li>
-            <li className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground">Location</span>
-              <span className="font-medium">Dhaka, Bangladesh</span>
-            </li>
-            <li className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground">Stack</span>
-              <span className="font-medium">MERN · Next.js</span>
-            </li>
-            <li className="flex items-center justify-between gap-3">
-              <span className="text-muted-foreground">Status</span>
-              <span className="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Open to work
-              </span>
-            </li>
-          </ul>
-        </aside>
-      </motion.div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {STATS.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 sm:p-6"
+            >
+              <div className="font-mono text-2xl font-bold tracking-tight sm:text-3xl">
+                {s.value}
+              </div>
+              <div className="mt-1 text-xs text-muted-foreground sm:text-sm">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </Section>
   );
 }
