@@ -53,12 +53,17 @@ const config: Config = {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
         },
+        "cursor-blink": {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out forwards",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "gradient-pan": "gradient-pan 8s ease infinite",
         "blink": "blink 1s step-end infinite",
+        "cursor-blink": "cursor-blink 1s step-end infinite",
       },
     },
   },

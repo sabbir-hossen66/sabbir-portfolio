@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/app/components/theme-provider";
+import { CursorFX } from "@/app/components/cursor-fx";
+import { DevTerminal } from "@/app/components/dev-terminal";
 import { siteConfig } from "@/lib/data";
 import "./globals.css";
 
@@ -77,6 +79,8 @@ export default function RootLayout({
           <div className="relative isolate flex min-h-screen flex-col">
             {children}
           </div>
+          <DevTerminal />
+          <CursorFX />
         </ThemeProvider>
       </body>
     </html>

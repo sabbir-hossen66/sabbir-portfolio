@@ -23,12 +23,12 @@ export const siteConfig = {
     "Portfolio of Sabbir Hossen — Front-End Engineer specializing in React, Next.js, TypeScript, and Node.js. Building scalable, accessible, and high-performance web products.",
   url: "https://sabbirhossen.dev",
   location: "Available Worldwide · Remote-First",
-  email: "hello@sabbirhossen.dev",
+  email: "sabbirhossen.eng66@gmail.com",
   phone: "+880 1783780066",
   resumeUrl:
-    "https://drive.google.com/uc?export=download&id=1XGhqVACmedHYwGw6yTu5Ng9FF29RX-B6",
+    "https://drive.google.com/uc?export=download&id=1yHm3ZSBRiqZZNqaOqrf_5cv30GJRvjM1",
   resumePreviewUrl:
-    "https://drive.google.com/file/d/1XGhqVACmedHYwGw6yTu5Ng9FF29RX-B6/view?usp=drivesdk",
+    "https://drive.google.com/file/d/1yHm3ZSBRiqZZNqaOqrf_5cv30GJRvjM1/view?usp=sharing",
   ogImage: "/og.png",
   socials: {
     github: "https://github.com/sabbir-hossen66",
