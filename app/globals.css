@@ -271,6 +271,52 @@
   50%, 100% { opacity: 0; }
 }
 
+/* WhatsApp FAB — pulse + click ripple */
+@keyframes wa-ping {
+  0%   { transform: scale(1);    opacity: 0.55; }
+  80%, 100% { transform: scale(1.85); opacity: 0; }
+}
+@keyframes wa-ripple {
+  0%   { transform: scale(0.9);  opacity: 0.45; }
+  100% { transform: scale(1.6);  opacity: 0; }
+}
+
+/* Pin the FAB to its own compositor layer so hover transforms don't
+   retrigger layout on the rest of the page (this is what was causing
+   the mid-hover stutter). */
+.wa-fab {
+  contain: layout paint;
+  transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Pause the pulse ring while the user is hovering/focusing the icon,
+   so the animation mid-frame never gets re-evaluated mid-hover. */
+.wa-fab:hover .wa-fab-ring,
+.wa-fab:focus-visible .wa-fab-ring {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+/* Click ripple — fires only while the mouse / finger is held down.
+   One-shot keyframe, no JS needed. */
+.wa-fab:active .wa-fab-ripple {
+  background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0) 60%);
+  animation: wa-ripple 0.55s ease-out;
+}
+
+/* Respect reduced motion — kill the pulse + ripple */
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab-ring,
+  .wa-fab-ripple {
+    animation: none !important;
+  }
+  .wa-fab:hover .wa-fab-ring,
+  .wa-fab:active .wa-fab-ripple {
+    animation: none !important;
+  }
+}
+
 /* Cursor FX — hide native cursor only on fine-pointer devices */
 @media (pointer: fine) {
   html.cursor-fx-active,

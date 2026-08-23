@@ -4,7 +4,10 @@ import { ThemeProvider } from "@/app/components/theme-provider";
 import { DotGridBg } from "@/app/components/dot-grid-bg";
 import { CursorFX } from "@/app/components/cursor-fx";
 import { DevTerminal } from "@/app/components/dev-terminal";
+import { WhatsAppFab } from "@/app/components/whatsapp-fab";
 import { siteConfig } from "@/lib/data";
+// CSS is processed by Next.js at build time and does not require TypeScript declarations.
+// @ts-expect-error Next.js handles this side-effect stylesheet import.
 import "./globals.css";
 
 const inter = Inter({
@@ -74,7 +77,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrains.variable}`}
+    >
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
           <DotGridBg />
@@ -83,6 +90,7 @@ export default function RootLayout({
           </div>
           <DevTerminal />
           <CursorFX />
+          <WhatsAppFab />
         </ThemeProvider>
       </body>
     </html>
