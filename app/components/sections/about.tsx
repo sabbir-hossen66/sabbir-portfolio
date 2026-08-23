@@ -1,6 +1,7 @@
 import { Download } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Section } from "@/app/components/ui/section";
+import { Reveal, Stagger } from "@/app/components/reveal";
 import { STATS, SITE } from "@/lib/data";
 
 export function About() {
@@ -11,7 +12,7 @@ export function About() {
       subtitle="A short story of where I've been and what I focus on."
     >
       <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-4 text-base text-muted-foreground sm:text-lg">
+        <Reveal className="space-y-4 text-base text-muted-foreground sm:text-lg">
           <p>
             I&apos;m <span className="font-medium text-foreground">Sabbir Hossen</span>,
             a full-stack MERN developer with <span className="font-medium text-foreground">2+ years</span>{" "}
@@ -42,13 +43,19 @@ export function About() {
               </Button>
             </a>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        <Stagger
+          as="div"
+          className="grid grid-cols-2 gap-3 sm:gap-4"
+          step={100}
+          initialDelay={120}
+          variant="up"
+        >
           {STATS.map((s) => (
             <div
               key={s.label}
-              className="rounded-xl border border-border bg-card p-4 transition-colors hover:border-foreground/20 sm:p-6"
+              className="card-hover gradient-border rounded-xl border border-border bg-card p-4 sm:p-6"
             >
               <div className="font-mono text-2xl font-bold tracking-tight sm:text-3xl">
                 {s.value}
@@ -58,7 +65,7 @@ export function About() {
               </div>
             </div>
           ))}
-        </div>
+        </Stagger>
       </div>
     </Section>
   );

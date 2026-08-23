@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/cn";
+import { Reveal, Stagger } from "@/app/components/reveal";
 
 type SectionProps = React.HTMLAttributes<HTMLElement> & {
   id: string;
@@ -30,26 +31,34 @@ export function Section({
     >
       <div className="container mx-auto max-w-6xl">
         {(eyebrow || title || body) && (
-          <header className="mb-12 max-w-2xl">
+          <Stagger
+            className="mb-12 max-w-2xl space-y-3"
+            step={80}
+            initialDelay={0}
+            as="header"
+            itemClassName=""
+            variant="up"
+          >
             {eyebrow && (
-              <p className="mb-3 text-sm font-medium uppercase tracking-wider text-muted-foreground">
+              <Reveal as="p" className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
                 {eyebrow}
-              </p>
+              </Reveal>
             )}
             {title && (
-              <h2
+              <Reveal
+                as="h2"
                 id={`${id}-title`}
                 className="text-3xl font-semibold tracking-tight sm:text-4xl"
               >
                 {title}
-              </h2>
+              </Reveal>
             )}
             {body && (
-              <p className="mt-4 text-base text-muted-foreground sm:text-lg">
+              <Reveal as="p" className="text-base text-muted-foreground sm:text-lg">
                 {body}
-              </p>
+              </Reveal>
             )}
-          </header>
+          </Stagger>
         )}
         {children}
       </div>

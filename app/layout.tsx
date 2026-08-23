@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/app/components/theme-provider";
+import { DotGridBg } from "@/app/components/dot-grid-bg";
 import { CursorFX } from "@/app/components/cursor-fx";
 import { DevTerminal } from "@/app/components/dev-terminal";
 import { siteConfig } from "@/lib/data";
@@ -76,6 +77,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
+          <DotGridBg />
           <div className="relative isolate flex min-h-screen flex-col">
             {children}
           </div>

@@ -1,5 +1,6 @@
 import { Section } from "@/app/components/ui/section";
 import { Badge } from "@/app/components/ui/badge";
+import { Stagger } from "@/app/components/reveal";
 import { SKILLS } from "@/lib/data";
 
 export function Skills() {
@@ -11,13 +12,19 @@ export function Skills() {
       title="Skills & Stack"
       subtitle="Tools I reach for daily — and a few I'm actively learning."
     >
-      <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Stagger
+        as="div"
+        className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-3"
+        step={110}
+        initialDelay={60}
+        variant="up"
+      >
         {categories.map((category) => {
           const items = SKILLS.filter((s) => s.category === category);
           return (
             <div
               key={category}
-              className="rounded-xl border border-border bg-card p-6"
+              className="card-hover gradient-border rounded-xl border border-border bg-card p-6"
             >
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-muted-foreground">
                 {category}
@@ -40,7 +47,7 @@ export function Skills() {
             </div>
           );
         })}
-      </div>
+      </Stagger>
     </Section>
   );
 }

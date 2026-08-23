@@ -2,6 +2,7 @@ import { Briefcase } from "lucide-react";
 import { Section } from "@/app/components/ui/section";
 import { Badge } from "@/app/components/ui/badge";
 import { Card, CardContent } from "@/app/components/ui/card";
+import { Reveal, Stagger } from "@/app/components/reveal";
 import { EXPERIENCES } from "@/lib/data";
 
 export function Experience() {
@@ -11,7 +12,13 @@ export function Experience() {
       title="Experience"
       subtitle="Two years, two countries, and a stack that keeps growing."
     >
-      <ol className="relative mx-auto max-w-3xl space-y-8 border-l border-border pl-6 sm:pl-8">
+      <Stagger
+        as="ol"
+        className="relative mx-auto max-w-3xl space-y-8 border-l border-border pl-6 sm:pl-8"
+        step={140}
+        initialDelay={80}
+        variant="up"
+      >
         {EXPERIENCES.map((exp) => (
           <li key={exp.company} className="relative">
             <span
@@ -63,7 +70,7 @@ export function Experience() {
             </Card>
           </li>
         ))}
-      </ol>
+      </Stagger>
     </Section>
   );
 }

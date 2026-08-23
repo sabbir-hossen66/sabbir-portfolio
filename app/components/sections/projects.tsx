@@ -2,6 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Section } from "@/app/components/ui/section";
 import { Badge } from "@/app/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
+import { Stagger } from "@/app/components/reveal";
 import { PROJECTS } from "@/lib/data";
 
 export function Projects() {
@@ -11,7 +12,13 @@ export function Projects() {
       title="Selected Projects"
       subtitle="A few things I've built or led across product and contract work."
     >
-      <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+      <Stagger
+        as="div"
+        className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2"
+        step={120}
+        initialDelay={80}
+        variant="up"
+      >
         {PROJECTS.map((p) => (
           <Card key={p.title} className="group flex flex-col">
             <CardHeader>
@@ -71,7 +78,7 @@ export function Projects() {
             </CardContent>
           </Card>
         ))}
-      </div>
+      </Stagger>
     </Section>
   );
 }

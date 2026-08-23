@@ -87,6 +87,19 @@
     background-size: 32px 32px;
   }
 
+  /* Layered dot grid — primary dot layer + subtle line grid */
+  .bg-dots {
+    background-image:
+      radial-gradient(circle at center, hsl(var(--muted-foreground) / 0.45) 1px, transparent 1.5px);
+    background-size: 22px 22px;
+  }
+
+  .bg-dots-fine {
+    background-image:
+      radial-gradient(circle at center, hsl(var(--muted-foreground) / 0.28) 1px, transparent 1.5px);
+    background-size: 14px 14px;
+  }
+
   .bg-grid {
     background-image:
       radial-gradient(circle, hsl(var(--muted-foreground) / 0.35) 1px, transparent 1px),
@@ -94,6 +107,85 @@
       linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
     background-size: 32px 32px, 32px 32px, 32px 32px;
     background-position: 0 0, 0 0, 0 0;
+  }
+
+  /* Reveal: hidden state used by IntersectionObserver */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    filter: blur(6px);
+    will-change: opacity, transform, filter;
+  }
+  .reveal.is-visible {
+    animation: reveal-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .reveal-fade {
+    opacity: 0;
+    will-change: opacity;
+  }
+  .reveal-fade.is-visible {
+    animation: reveal-fade 0.7s ease-out forwards;
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    will-change: opacity, transform;
+  }
+  .reveal-scale.is-visible {
+    animation: reveal-scale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Card hover lift — standard */
+  .card-hover {
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 30px -10px rgba(0, 0, 0, 0.15),
+      0 4px 12px -6px rgba(0, 0, 0, 0.08);
+  }
+  .dark .card-hover:hover {
+    box-shadow:
+      0 14px 40px -10px rgba(0, 0, 0, 0.55),
+      0 4px 14px -6px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Animated gradient border for cards */
+  .gradient-border {
+    position: relative;
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground) / 0.15),
+      transparent 40%,
+      transparent 60%,
+      hsl(var(--foreground) / 0.1)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    opacity: 0.6;
+  }
+  .gradient-border:hover::before {
+    opacity: 1;
   }
 
   /* Custom scrollbar inside the terminal */
@@ -109,10 +201,110 @@
   }
 }
 
+/* Keyframes used by the reveal/stagger system — kept here (not in Tailwind)
+   so they're always emitted to the bundle regardless of JIT class scanning. */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes reveal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-pan {
+  0%,
+  100% { background-position: 0% 50%; }
+  50%    { background-position: 100% 50%; }
+}
+
+@keyframes blink {
+  0%,
+  100% { opacity: 1; }
+  50%    { opacity: 0; }
+}
+
+@keyframes cursor-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
 /* Cursor FX — hide native cursor only on fine-pointer devices */
 @media (pointer: fine) {
   html.cursor-fx-active,
   html.cursor-fx-active * {
     cursor: none !important;
+  }
+}
+
+/* Respect reduced motion — kill all reveals/animations */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-fade,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+  .animate-marquee,
+  .animate-reveal-up,
+  .animate-fade-in,
+  .animate-fade-in-up {
+    animation: none !important;
+  }
+}
+
+/* Failsafe: if hydration is slow / blocked, still show content after
+   1.6s. Once .is-visible is added the higher-specificity rule wins
+   (animation runs once, cleanly). If JS never hydrates, the element
+   fades in at 1.6s instead of staying hidden forever. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal:not(.is-visible),
+  .reveal-fade:not(.is-visible),
+  .reveal-scale:not(.is-visible) {
+    animation: reveal-fade 0.4s ease-out 1.6s forwards;
   }
 }

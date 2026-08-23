@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ArrowDown, Download, Github, Linkedin, Mail, MapPin } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Badge } from "@/app/components/ui/badge";
+import { Stagger } from "@/app/components/reveal";
 import { SITE } from "@/lib/data";
 import { cn } from "@/lib/cn";
 
@@ -60,7 +61,13 @@ export function Hero() {
       />
 
       <div className="container grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-        <div className="flex flex-col gap-6">
+        <Stagger
+          as="div"
+          className="flex flex-col gap-6"
+          step={120}
+          initialDelay={80}
+          variant="up"
+        >
           <Badge variant="outline" className="w-fit gap-2">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
@@ -144,7 +151,7 @@ export function Hero() {
               {SITE.location}
             </span>
           </div>
-        </div>
+        </Stagger>
 
         <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
           <div className="relative aspect-square w-full">
