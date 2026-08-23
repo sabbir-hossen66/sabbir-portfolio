@@ -6,8 +6,7 @@ import { CursorFX } from "@/app/components/cursor-fx";
 import { DevTerminal } from "@/app/components/dev-terminal";
 import { WhatsAppFab } from "@/app/components/whatsapp-fab";
 import { siteConfig } from "@/lib/data";
-// CSS is handled by Next.js at runtime and has no TypeScript declarations.
-// @ts-expect-error -- suppresses the side-effect CSS import type diagnostic.
+// @ts-ignore Next.js handles global CSS imports at build time.
 import "./globals.css";
 
 const inter = Inter({
