@@ -7,9 +7,11 @@
 // Build output path must match the `src` in vercel.json: dist/vercel-entry.js.
 // `nest build` is configured (tsconfig) to emit CommonJS to ./dist.
 //
-// Note: we type req/res as minimal Node shapes to avoid a hard dependency on
-// @vercel/node at build time. Vercel's @vercel/node runtime injects objects
-// compatible with these interfaces.
+// Note: req/res come from Vercel's @vercel/node runtime. We cast to
+// `any` at the dispatch boundary because Vercel's runtime surface is a
+// superset of Express's req/res, but the types live in @vercel/node (not
+// installed at build time). This keeps the compile clean while still
+// getting full Express behaviour at runtime.
 
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import { NestFactory } from "@nestjs/core";
@@ -57,16 +59,16 @@ async function getApp(): Promise<NestExpressApplication> {
   return app;
 }
 
-export default async function handler(
-  req: { url?: string; method?: string; headers: Record<string, string | string[] | undefined>; body?: unknown },
-  res: {
-    statusCode?: number;
-    setHeader(name: string, value: string | string[]): void;
-    getHeader(name: string): string | string[] | undefined;
-    end(chunk?: unknown): void;
-    write(chunk: unknown): void;
-  }
-) {
+// Express types live in @types/express, which we already have. Casting
+// to `any` here is safe: Vercel's @vercel/node runtime injects objects
+// that satisfy Express's req/res interface at runtime. The cast keeps
+// the build clean without forcing @vercel/node as a devDependency.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyReq = any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyRes = any;
+
+export default async function handler(req: AnyReq, res: AnyRes) {
   const app = await getApp();
   // Underlying Express instance — what actually serves the request.
   // Vercel's @vercel/node runtime preserves the original URL in req.url,
