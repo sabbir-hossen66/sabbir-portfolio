@@ -1,11 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/api/messages/[id]/route": "app/api/messages/[id]/route.js",
+  "/api/messages/list/route": "app/api/messages/list/route.js",
   "/api/messages/submit/route": "app/api/messages/submit/route.js",
   "/api/messages/route": "app/api/messages/route.js",
-  "/page": "app/page.js",
-  "/api/messages/list/route": "app/api/messages/list/route.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/page": "app/page.js",
   "/api/resume/route": "app/api/resume/route.js",
   "/api/contact/route": "app/api/contact/route.js",
   "/admin/page": "app/admin/page.js"
