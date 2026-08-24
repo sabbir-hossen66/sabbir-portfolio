@@ -1,0 +1,11 @@
+# Vercel
+.vercel
+
+# Build
+dist
+node_modules
+
+# Env (committed .env.example only — real secrets live in Vercel dashboard)
+.env
+.env.local
+.env.production

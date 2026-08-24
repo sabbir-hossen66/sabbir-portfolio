@@ -25,6 +25,10 @@ export const siteConfig = {
   location: "Available Worldwide · Remote-First",
   email: "sabbirhossen.eng66@gmail.com",
   phone: "+880 1783780066",
+  // E.164 digits only (no '+' or spaces) — required by wa.me deep links.
+  whatsappNumber: "8801783780066",
+  whatsappMessage:
+    "Hi Sabbir! I just saw your portfolio and I'd love to chat about a project.",
   resumeUrl:
     "https://drive.google.com/uc?export=download&id=1yHm3ZSBRiqZZNqaOqrf_5cv30GJRvjM1",
   resumePreviewUrl:

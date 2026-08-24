@@ -131,13 +131,6 @@ export default function DashboardPage() {
       });
     }
   }, []);
-    } catch (err) {
-      setState({
-        kind: "error",
-        error: err instanceof Error ? err.message : "Something went wrong.",
-      });
-    }
-  }, []);
 
   // Fetch when token becomes available.
   useEffect(() => {
