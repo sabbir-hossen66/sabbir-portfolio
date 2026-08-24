@@ -1,18 +1,5 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  Code2,
-  Layers,
-  Rocket,
-  Wrench,
-  Globe,
-  Smartphone,
-  Database,
-  GitBranch,
-  Boxes,
-  Cloud,
-  ShieldCheck,
-  LineChart,
-} from "lucide-react";
+// Canonical source: apps/frontend/lib/data.ts
+export * from "../apps/frontend/lib/data";
 
 export const siteConfig = {
   name: "Sabbir Hossen",
@@ -35,11 +22,6 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/sabbir-hossen66/",
     twitter: "https://twitter.com/sabbirhossen",
   },
-  /** WhatsApp — local BD number, no '+' or spaces, used by wa.me */
-  whatsappNumber: "8801783780066",
-  /** Pre-filled text shown in the WhatsApp composer. */
-  whatsappMessage:
-    "Hi Sabbir, I just visited your portfolio and would love to chat about a project / opportunity.",
 } as const;
 
 export const SITE = siteConfig;

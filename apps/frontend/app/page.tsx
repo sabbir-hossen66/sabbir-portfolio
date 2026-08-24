@@ -5,6 +5,7 @@ import { Experience } from "@/app/components/sections/experience";
 import { Skills } from "@/app/components/sections/skills";
 import { Projects } from "@/app/components/sections/projects";
 import { Contact } from "@/app/components/sections/contact";
+import { MessagesSection as Messages } from "@/app/components/sections/messages";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
         <Experience />
         <Skills />
         <Projects />
+        <Messages />
         <Contact />
       </main>
       <footer className="border-t border-border py-8 text-center text-sm text-muted-foreground">

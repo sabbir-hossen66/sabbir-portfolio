@@ -28,6 +28,7 @@ yarn-error.log*
 .env*.local
 .env
 .puku
+
 # vercel
 .vercel
 .puku
@@ -35,3 +36,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# api (NestJS)
+apps/api/dist
+apps/api/node_modules
+apps/api/.env

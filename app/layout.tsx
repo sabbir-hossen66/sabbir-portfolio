@@ -1,13 +1,5 @@
-import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "@/app/components/theme-provider";
-import { DotGridBg } from "@/app/components/dot-grid-bg";
-import { CursorFX } from "@/app/components/cursor-fx";
-import { DevTerminal } from "@/app/components/dev-terminal";
-import { WhatsAppFab } from "@/app/components/whatsapp-fab";
-import { siteConfig } from "@/lib/data";
-// @ts-ignore Next.js handles global CSS imports at build time.
-import "./globals.css";
+// Canonical layout: apps/frontend/app/layout.tsx
+// This stub is dead code at the repo root — delete the whole `app/` folder.
 
 const inter = Inter({
   subsets: ["latin"],
@@ -76,20 +68,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${jetbrains.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${jetbrains.variable}`}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider>
-          <DotGridBg />
           <div className="relative isolate flex min-h-screen flex-col">
             {children}
           </div>
           <DevTerminal />
           <CursorFX />
-          <WhatsAppFab />
         </ThemeProvider>
       </body>
     </html>

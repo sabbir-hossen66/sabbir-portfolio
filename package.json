@@ -2,34 +2,27 @@
   "name": "sabbir-portfolio",
   "version": "1.0.0",
   "private": true,
+  "description": "Monorepo root — orchestrates the Next.js frontend and NestJS API.",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
-  },
-  "dependencies": {
-    "next": "14.2.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "framer-motion": "^11.3.19",
-    "lucide-react": "^0.424.0",
-    "react-hook-form": "^7.52.1",
-    "zod": "^3.23.8",
-    "@hookform/resolvers": "^3.9.0",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm run dev:web\" \"npm run dev:api\"",
+    "dev:web": "npm --workspace @portfolio/web run dev",
+    "dev:api": "npm --workspace @portfolio/api run start:dev",
+    "build": "npm --workspace @portfolio/web run build",
+    "build:web": "npm --workspace @portfolio/web run build",
+    "build:api": "npm --workspace @portfolio/api run build",
+    "start": "npm --workspace @portfolio/web run start",
+    "lint": "npm --workspace @portfolio/web run lint",
+    "lint:web": "npm --workspace @portfolio/web run lint",
+    "lint:api": "npm --workspace @portfolio/api run lint",
+    "type-check": "npm --workspace @portfolio/web run type-check",
+    "type-check:web": "npm --workspace @portfolio/web run type-check",
+    "type-check:api": "npm --workspace @portfolio/api run type-check"
   },
   "devDependencies": {
-    "@types/node": "^20.14.13",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "14.2.5",
-    "postcss": "^8.4.40",
-    "tailwindcss": "^3.4.7",
+    "concurrently": "^8.2.2",
     "typescript": "^5.5.4"
   }
 }

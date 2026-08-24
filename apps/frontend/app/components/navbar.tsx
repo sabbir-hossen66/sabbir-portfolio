@@ -75,6 +75,13 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/admin"
+            className="hidden rounded-md px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground md:inline-block"
+            aria-label="Owner inbox"
+          >
+            Inbox
+          </Link>
           <ThemeToggle />
           <button
             type="button"
@@ -103,6 +110,13 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/admin"
+            onClick={() => setOpen(false)}
+            className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            Inbox
+          </Link>
         </nav>
       )}
     </header>

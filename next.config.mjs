@@ -1,14 +1,4 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "**" },
-    ],
-  },
-  experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
-  },
-};
-
-export default nextConfig;
+// Canonical source: apps/frontend/next.config.mjs
+// Next.js reads next.config.mjs from the project root. Re-export the
+// workspace copy so this file stays in sync with apps/frontend/.
+export { default } from "./apps/frontend/next.config.mjs";

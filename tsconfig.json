@@ -1,24 +1,10 @@
 {
-  "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [{ "name": "next" }],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "//": "Root tsconfig is a delegator. The real configs live next to each app:",
+  "//": "  - apps/frontend/tsconfig.json — Next.js (paths, jsx, etc.)",
+  "//": "  - apps/api/tsconfig.json     — NestJS",
+  "files": [],
+  "references": [
+    { "path": "./apps/frontend" },
+    { "path": "./apps/api" }
+  ]
 }

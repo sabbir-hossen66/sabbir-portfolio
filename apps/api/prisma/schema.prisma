@@ -1,0 +1,32 @@
+// Prisma schema for the portfolio anonymous-messages feature.
+// Run `prisma db push` (or `prisma migrate dev`) against your DATABASE_URL
+// to apply. Driver-adapters preview feature is required for the Neon adapter.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// A single anonymous note left by a visitor. No PII is collected beyond an
+/// optional display name the visitor chooses to provide.
+model Message {
+  id        String   @id @default(cuid())
+  /// One of: compliment, project, hire, chat. Enforced server-side in the DTO.
+  category  String
+  /// Optional emoji the visitor attached. Allowlisted on the server.
+  emoji     String?
+  /// Optional display name. Never required, never shown publicly.
+  name      String?
+  /// The actual note body (1..2000 chars).
+  message   String
+  /// Server-assigned timestamp, used for ordering & cursor pagination.
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@map("messages")
+}
