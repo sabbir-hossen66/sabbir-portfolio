@@ -13,6 +13,7 @@
 // installed at build time). This keeps the compile clean while still
 // getting full Express behaviour at runtime.
 
+import "reflect-metadata";
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import { NestFactory } from "@nestjs/core";
 import { ValidationPipe, Logger } from "@nestjs/common";
