@@ -29,7 +29,7 @@ function SuccessToast({ onClose }: { onClose: () => void }) {
       <div className="flex-1">
         <p className="text-sm font-semibold text-foreground">Message sent! 🎉</p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          Thanks for reaching out. I'll read it soon.
+          Thanks for reaching out. I&apos;ll read it soon.
         </p>
       </div>
       <button

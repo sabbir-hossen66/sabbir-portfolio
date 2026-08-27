@@ -521,7 +521,7 @@ function InboxPage({ token, onLogout }: { token: string; onLogout: () => void })
           )}
           {!hasMore && messages.length > 0 && (
             <p className="text-xs text-muted-foreground">
-              You've seen all {messages.length} messages ✓
+              You&apos;ve seen all {messages.length} messages ✓
             </p>
           )}
         </div>
