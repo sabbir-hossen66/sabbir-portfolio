@@ -1,5 +1,5 @@
 {
-  "/api/messages/admin-list/route": "app/api/messages/admin-list/route.js",
   "/page": "app/page.js",
+  "/api/messages/admin-list/route": "app/api/messages/admin-list/route.js",
   "/admin/page": "app/admin/page.js"
 }

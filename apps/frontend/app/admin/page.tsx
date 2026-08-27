@@ -207,14 +207,7 @@ function LoginPage({ onLogin }: { onLogin: (token: string) => void }) {
           </p>
         </div>
 
-        {/* Hint */}
-        <div className="mt-4 flex items-center gap-2 rounded-xl border border-border bg-card/40 px-4 py-3 text-xs text-muted-foreground">
-          <KeyRound className="h-3.5 w-3.5 shrink-0" />
-          <span>
-            Your token is <code className="font-mono text-foreground">ADMIN_TOKEN</code> from{" "}
-            <code className="font-mono text-foreground">apps/api/.env</code>
-          </span>
-        </div>
+       
       </motion.div>
     </main>
   );
