@@ -9,7 +9,8 @@
  * at all, the env is already valid. (Re-deploy to rotate the token.)
  */
 import { useCallback, useEffect, useState } from "react";
-import { Trash2, RefreshCw, Inbox, Lock, KeyRound } from "lucide-react";
+import { Trash2, RefreshCw, Inbox, Lock, KeyRound, ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { Reveal, Stagger } from "@/app/components/reveal";
 
 type Category = "compliment" | "hire" | "project" | "chat";
@@ -42,7 +43,7 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/messages/list", { cache: "no-store" });
       if (res.status === 401) {
-        throw new Error("Server admin token is invalid. Update ADMIN_TOKEN in your env.");
+        throw new Error("ADMIN_TOKEN is missing or invalid. Please set it in Vercel Environment Variables and redeploy, or use the /dashboard page which requires you to enter the token manually.");
       }
       if (!res.ok) throw new Error(`Failed to load (${res.status})`);
       const data = await res.json();
@@ -84,10 +85,19 @@ export default function AdminPage() {
         {/* Header */}
         <Reveal as="header" className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-              <Lock className="h-3 w-3" />
-              Owner only
-            </span>
+            <Link
+              href="/"
+              className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to portfolio
+            </Link>
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
+                <Lock className="h-3 w-3" />
+                Owner only
+              </span>
+            </div>
             <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
               Anonymous inbox
             </h1>

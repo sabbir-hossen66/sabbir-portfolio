@@ -11,8 +11,38 @@
  */
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
+import { Send, CheckCircle2, Loader2, ShieldCheck, X } from "lucide-react";
 import { Reveal, Stagger } from "@/app/components/reveal";
+
+function SuccessToast({ onClose }: { onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -20, scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="fixed right-4 top-4 z-50 flex items-start gap-3 rounded-2xl border border-emerald-500/30 bg-card/90 p-4 shadow-lg backdrop-blur-sm sm:right-6 sm:top-6 sm:min-w-[320px]"
+    >
+      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-500">
+        <CheckCircle2 className="h-4 w-4" />
+      </span>
+      <div className="flex-1">
+        <p className="text-sm font-semibold text-foreground">Message sent! 🎉</p>
+        <p className="mt-0.5 text-xs text-muted-foreground">
+          Thanks for reaching out. I'll read it soon.
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={onClose}
+        className="ml-1 rounded-md p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        aria-label="Close"
+      >
+        <X className="h-3.5 w-3.5" />
+      </button>
+    </motion.div>
+  );
+}
 
 type Category = "compliment" | "hire" | "project" | "chat";
 
@@ -34,6 +64,7 @@ export function MessagesSection() {
 
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
 
   const canSend =
     message.trim().length >= 3 &&
@@ -76,9 +107,13 @@ export function MessagesSection() {
       setReplyEmail("");
       setAllowReply(false);
       setStatus("sent");
+      setShowToast(true);
 
       // Reset success state after a moment so the user can send again
-      setTimeout(() => setStatus("idle"), 3500);
+      setTimeout(() => {
+        setStatus("idle");
+        setShowToast(false);
+      }, 4000);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
@@ -86,6 +121,14 @@ export function MessagesSection() {
   };
 
   return (
+    <>
+      {/* Success Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <SuccessToast onClose={() => setShowToast(false)} />
+        )}
+      </AnimatePresence>
+
     <section id="messages" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6">
         <Stagger as="header" step={80} className="mb-10 text-center">
@@ -232,5 +275,6 @@ export function MessagesSection() {
         </Reveal>
       </div>
     </section>
+    </>
   );
 }
