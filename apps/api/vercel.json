@@ -1,13 +1,6 @@
 
 {
   "version": 2,
-  "buildCommand": "PATH=\"$(npm root)/.bin:$PATH\" nest build && PATH=\"$(npm root)/.bin:$PATH\" prisma generate",
-  "outputDirectory": "dist",
-  "functions": {
-    "dist/vercel-entry.js": {
-      "runtime": "@vercel/node"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
